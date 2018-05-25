@@ -305,10 +305,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AWSDMove.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\GroundRuleDecision.cs" />
-    <Compile Include="Assets\Scripts\SwapClass.cs" />
+    <Compile Include="Assets\Scripts\InitialClassSelect.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\AWSDMove.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\SwapClass.cs" />
     <Compile Include="Assets\Scripts\UIButtonFunctions.cs" />
   </ItemGroup>
   <ItemGroup>

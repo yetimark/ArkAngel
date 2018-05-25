@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
 
 	void Awake ()
     {
-        this.currAngel = this.GetComponent<GroundRuleDecision>().chosenOne;
+        this.currAngel = GameObject.Find("UI Controller");//empty game object
 
         this.throne = GameObject.Find("Throne");
         this.seraphim = GameObject.Find("Seraphim");

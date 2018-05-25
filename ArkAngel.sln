@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkAngel", "ArkAngel.csproj", "{49DE904D-CD19-0496-8397-5FA363D4E128}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkAngel.Editor", "ArkAngel.Editor.csproj", "{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkAngel.Editor", "ArkAngel.Editor.csproj", "{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}"
 EndProject
@@ -21,11 +21,12 @@ Global
 		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0A00A6-D6E8-7E03-EE6E-F77CDD5F8D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {234D7C76-300E-456D-9C23-7AF907BDE255}
 	EndGlobalSection
 EndGlobal
