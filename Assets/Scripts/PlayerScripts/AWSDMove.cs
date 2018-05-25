@@ -6,7 +6,8 @@ public class AWSDMove : MonoBehaviour
 {
     private float horizontal;
     private float vertical;
-    private float moveSpeed = 7f;
+    private float moveSpeed = 20f;
+    private float turnSpeed = 180f;
 
 	void Update ()
     {
@@ -15,9 +16,10 @@ public class AWSDMove : MonoBehaviour
 
     void Move()
     {
-        this.horizontal = Input.GetAxis("Horizontal");
-        this.vertical = Input.GetAxis("Vertical");
+        this.horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed;
+        this.vertical = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
-        this.transform.position += new Vector3(this.horizontal, 0, this.vertical) * Time.deltaTime * moveSpeed;
+        this.transform.Rotate(0, this.horizontal, 0);
+        this.transform.Translate(0, 0, this.vertical);
     }
 }

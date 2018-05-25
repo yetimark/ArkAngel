@@ -305,11 +305,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\InitialClassSelect.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AWSDMove.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\InitialClassSelect.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\SwapClass.cs" />
-    <Compile Include="Assets\Scripts\UIButtonFunctions.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\Awaken.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UIButtonFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\admin\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
