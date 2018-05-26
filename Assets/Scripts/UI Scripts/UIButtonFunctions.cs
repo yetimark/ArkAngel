@@ -42,5 +42,4 @@ public class UIButtonFunctions : MonoBehaviour
         this.namePrompt.SetActive(false);
 
     }
-
 }

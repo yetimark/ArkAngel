@@ -388,7 +388,7 @@ Prefab:
     - target: {fileID: 224662097664065628, guid: 395cb9654d8206d44bf54f3b4ce599a8,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224662097664065628, guid: 395cb9654d8206d44bf54f3b4ce599a8,
         type: 2}
@@ -497,7 +497,7 @@ Prefab:
     - target: {fileID: 224098533915102676, guid: 8168f24d0ab9a3c4dbba5d73c8644d17,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224098533915102676, guid: 8168f24d0ab9a3c4dbba5d73c8644d17,
         type: 2}
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 1575500933}
   - component: {fileID: 1575500932}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: WakeUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,7 +876,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1690528744}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -894,9 +894,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816617fd252a32d4199ca045b44f0b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeMe: {r: 0, g: 0, b: 0, a: 0}
-  filled: {r: 1, g: 1, b: 1, a: 1}
-  unfilled: {r: 1, g: 1, b: 1, a: 0}
+  allowedToFill: 1
+  filled: 1
+  unfilled: 0
+  timeToChange: 1.5
   lerpedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1575500933
 MonoBehaviour:
@@ -1063,9 +1064,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1575500931}
   - {fileID: 700730367}
   - {fileID: 1980151178}
-  - {fileID: 1575500931}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -6,32 +6,48 @@ using UnityEngine.UI;
 public class Awaken : MonoBehaviour
 {
     // makes the character "wakeUp"
-    public Color changeMe;
-    public Color filled = new Vector4(0, 0, 0, 1);
-    public Color unfilled = new Vector4(0, 0, 0, 0);
-    public Color lerpedColor = Color.white;
+    public bool allowedToFill = true;
+    public float filled = 1f;
+    public float unfilled = 0f;
+    public float timeToChange = 5f; //change this val to affect speed of animation
+    public Color lerpedColor;
 
     private void Awake()
     {
-        //this.changeMe = this.GetComponent<Image>().color;
+        this.lerpedColor = this.GetComponent<Image>().color;
+        Debug.Log("a is.." + this.GetComponent<Image>().color.a);
     }
 
     void Update ()
     {
-        lerpedColor = Color.Lerp(Color.white, Color.black, Mathf.PingPong(Time.time, 1));
-        Debug.Log(lerpedColor);
-    }
-
-
-    public void WakeUp()
-    {
-        //changes "WakeUp" panel from black.a = 1 to black.a = 0
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(this.changeMe);
-            this.changeMe = this.filled;
-            Debug.Log(this.changeMe);
+            this.allowedToFill = true;
+        }
+        if (allowedToFill)
+        {
+            Debug.Log("we got in");
+            this.allowedToFill = false;
+            StartCoroutine(WakeUp(this.unfilled, this.filled));
+            Debug.Log("We did someting");
+        }
+
+        if(this.lerpedColor.a >= 0.99)
+        {
+            StartCoroutine(WakeUp(this.filled, this.unfilled));
         }
     }
-	
+
+
+    IEnumerator WakeUp(float start, float end)
+    {
+        //changes "WakeUp" panel from black.a = 1 to black.a = 0
+        for (float t = 0.0f; t < 1.0; t += Time.deltaTime / this.timeToChange)
+        {
+            this.lerpedColor = new Color(0, 0, 0, Mathf.Lerp(start, end, t));
+            Debug.Log(lerpedColor);
+            this.GetComponent<Image>().color = this.lerpedColor;
+            yield return null;
+        }
+    }
 }
