@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 222241714470545164}
   - component: {fileID: 114763763481520878}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: somting angelic
 --- !u!114 &114426239565919434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +347,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name Your Angel
+  m_Text: What would you name an angel?
 --- !u!114 &114748108323076732
 MonoBehaviour:
   m_ObjectHideFlags: 1
