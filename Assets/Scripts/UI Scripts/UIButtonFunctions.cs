@@ -84,7 +84,6 @@ public class UIButtonFunctions : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         PauseGame();

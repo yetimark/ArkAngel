@@ -11,6 +11,7 @@ public class SwapClass : MonoBehaviour
     
     public Vector3 home;
     public Quaternion homeRot;
+    public GameObject[] characters;
 
     public string standingOne = "";
 
@@ -18,8 +19,9 @@ public class SwapClass : MonoBehaviour
     {
         this.home = this.transform.position;
         this.homeRot = this.transform.rotation;
-	}
 
+        this.characters = GameObject.FindGameObjectsWithTag("Player");
+	}
 
     void OnTriggerEnter(Collider other)
     {
@@ -35,12 +37,12 @@ public class SwapClass : MonoBehaviour
             this.transform.rotation = this.homeRot;
 
             CheckName();
-            //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;
-            //StartCoroutine(Wait(8));
+
             //turns movement on for new character and trigger for old character off
             other.GetComponent<AWSDMove>().enabled = true;
             this.GetComponent<Collider>().isTrigger = true;
-
+            Debug.Log(this.name + this.GetComponent<Collider>().isTrigger);
+            Debug.Log(other.name + other.GetComponent<Collider>().isTrigger);
         }
     }
 
@@ -53,15 +55,18 @@ public class SwapClass : MonoBehaviour
         }
         else if(GameObject.Find((this.standingOne) + "Name").GetComponent<Text>().text != "")
         {
-            GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;//the addition that breaks it
-            this.GetComponent<AWSDMove>().enabled = false;
+            Debug.Log(this.standingOne + "new Guy");
+            StopMovement();
+            //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;//the addition that breaks it
         }
     }
 
-    IEnumerator Wait(float waitTime)
+    public void StopMovement()
     {
-        yield return new WaitForSeconds(waitTime);
+        for (int i = 0; i < this.characters.Length; i++)
+        {
+            this.characters[i].GetComponent<AWSDMove>().enabled = false;
+        }
     }
-
 }
 

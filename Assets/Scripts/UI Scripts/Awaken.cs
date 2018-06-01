@@ -34,7 +34,7 @@ public class Awaken : MonoBehaviour
             this.allowedToFill = false;
             StartCoroutine(WakeUp(this.unfilled, this.filled));//ctrl z away
             this.currAngel = GameObject.Find("Main Camera").GetComponent<CameraFollow>().currAngel;//turn off movement script for new angel
-            this.currAngel.GetComponent<AWSDMove>().enabled = false;
+            this.currAngel.GetComponent<AWSDMove>().enabled = false;//should this be done here?
         }
 
         if(this.lerpedColor.a >= 0.99)
