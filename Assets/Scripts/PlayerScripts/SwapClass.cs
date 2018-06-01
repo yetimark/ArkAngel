@@ -36,7 +36,7 @@ public class SwapClass : MonoBehaviour
 
             CheckName();
             //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;
-            StartCoroutine(Wait(8));
+            //StartCoroutine(Wait(8));
             //turns movement on for new character and trigger for old character off
             other.GetComponent<AWSDMove>().enabled = true;
             this.GetComponent<Collider>().isTrigger = true;
@@ -50,6 +50,11 @@ public class SwapClass : MonoBehaviour
         {
             GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().namePrompt.SetActive(true);//pull up name prompt
             GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().pauseGame = true;//stops game (movement)
+        }
+        else if(GameObject.Find((this.standingOne) + "Name").GetComponent<Text>().text != "")
+        {
+            GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;//the addition that breaks it
+            this.GetComponent<AWSDMove>().enabled = false;
         }
     }
 

@@ -33,10 +33,9 @@ public class CameraFollow : MonoBehaviour
         this.transform.rotation = angel.transform.rotation;
     }
 
-    void ChangeAngel()
-    {//double check on the || rotation for the first if block
-        if (this.throne.transform.position != this.throne.GetComponent<SwapClass>().home ||
-            this.throne.transform.rotation != this.throne.GetComponent<SwapClass>().homeRot)
+    void ChangeAngel()//change to else if?
+    {
+        if (this.throne.transform.position != this.throne.GetComponent<SwapClass>().home)
         {
             this.currAngel = this.throne;
         }
