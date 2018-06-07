@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 222992468076795738}
   - component: {fileID: 114321514744450256}
   m_Layer: 0
-  m_Name: CharacterName
+  m_Name: SeraphimName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402146241204050}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.2459912, y: 0.5, z: 2.6564424}
+  m_LocalPosition: {x: -4, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224733922056161640}
@@ -198,6 +198,7 @@ MonoBehaviour:
   homeRot: {x: 0, y: 0, z: 0, w: 0}
   characters: []
   standingOne: 
+  allowedToCollide: 0
 --- !u!114 &114453285745782750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402146241204050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74e928491f2274e40b24bb861cdc3c76, type: 3}
   m_Name: 

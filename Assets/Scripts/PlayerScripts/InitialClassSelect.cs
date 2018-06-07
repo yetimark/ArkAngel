@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class InitialClassSelect : MonoBehaviour
 {
     //selects a starting character.. based on character select button
-    //desire to have a default instead
-    //starting character should be inherited from last play
     public GameObject chosenOne;
     public string chosen;
 
@@ -25,7 +23,8 @@ public class InitialClassSelect : MonoBehaviour
             this.chosenOne = GameObject.Find(this.chosen);
 
             this.chosenOne.GetComponent<AWSDMove>().enabled = true;
-            this.chosenOne.GetComponent<Collider>().isTrigger = false; 
+            this.chosenOne.GetComponent<Collider>().isTrigger = false;
+            this.chosenOne.GetComponent<SwapClass>().allowedToCollide = true;
 
             GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().gate = false;//turns off function
         }

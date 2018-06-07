@@ -11,9 +11,11 @@ public class SwapClass : MonoBehaviour
     
     public Vector3 home;
     public Quaternion homeRot;
-    public GameObject[] characters;
+    public GameObject[] characters;// is this being used?
 
     public string standingOne = "";
+
+    public bool allowedToCollide = false;
 
 	void Awake ()
     {
@@ -25,8 +27,11 @@ public class SwapClass : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name != "Plane")// not required if plane or terrain does not have a collider enabled. had some issues with it activating trigger events.
+        if(other.gameObject.name != "Plane" && this.allowedToCollide)// not required if plane or terrain does not have a collider enabled. had some issues with it activating trigger events.
         {
+            this.allowedToCollide = false;
+            GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;
+
             this.standingOne = other.gameObject.name;
             //turns trigger for new character off and movement for old character off
             other.GetComponent<Collider>().isTrigger = false;
@@ -36,36 +41,21 @@ public class SwapClass : MonoBehaviour
             this.transform.position = this.home;
             this.transform.rotation = this.homeRot;
 
-            CheckName();
+            StopMovement();
 
             //turns movement on for new character and trigger for old character off
             other.GetComponent<AWSDMove>().enabled = true;
             this.GetComponent<Collider>().isTrigger = true;
-            Debug.Log(this.name + this.GetComponent<Collider>().isTrigger);
-            Debug.Log(other.name + other.GetComponent<Collider>().isTrigger);
         }
     }
 
-    public void CheckName()
-    {
-        if(GameObject.Find((this.standingOne) + "Name").GetComponent<Text>().text == "")//if no name pause game and pull up name prompt
-        {
-            GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().namePrompt.SetActive(true);//pull up name prompt
-            GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().pauseGame = true;//stops game (movement)
-        }
-        else if(GameObject.Find((this.standingOne) + "Name").GetComponent<Text>().text != "")
-        {
-            Debug.Log(this.standingOne + "new Guy");
-            StopMovement();
-            //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;//the addition that breaks it
-        }
-    }
 
     public void StopMovement()
     {
         for (int i = 0; i < this.characters.Length; i++)
         {
             this.characters[i].GetComponent<AWSDMove>().enabled = false;
+            Debug.Log("did we stop moving?" + this.characters[i]);
         }
     }
 }

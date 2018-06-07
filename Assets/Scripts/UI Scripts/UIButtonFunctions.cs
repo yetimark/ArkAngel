@@ -33,6 +33,8 @@ public class UIButtonFunctions : MonoBehaviour
         //allows GroundRuleDecision to pull new value for this.chosen
         //also could be used for some if blocks in setting names
         this.gate = true;
+
+        GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToClose = true;
     }
 
     public void InitializeAngel()

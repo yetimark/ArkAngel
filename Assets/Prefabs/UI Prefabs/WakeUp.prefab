@@ -41,10 +41,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToFill: 1
+  allowedToClose: 0
   filled: 1
   unfilled: 0
   timeToChange: 1.5
   lerpedColor: {r: 1, g: 1, b: 1, a: 1}
+  currAngel: {fileID: 0}
 --- !u!114 &114986492999555096
 MonoBehaviour:
   m_ObjectHideFlags: 1

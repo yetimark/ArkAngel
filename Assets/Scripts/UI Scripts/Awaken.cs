@@ -26,30 +26,30 @@ public class Awaken : MonoBehaviour  //FIX, make ghost character on start and ha
 
     void Update ()
     {
-        if (Input.GetMouseButtonDown(0))//remove eventually
-        {
-            this.allowedToFill = true;
-        }
+        this.currAngel = GameObject.Find("Main Camera").GetComponent<CameraFollow>().currAngel;
 
         if (allowedToFill &&
             GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().pauseCounter > 0) //on collision
         {
             this.allowedToFill = false;
             StartCoroutine(WakeUp(this.unfilled, this.filled));//ctrl z away
-            this.currAngel = GameObject.Find("Main Camera").GetComponent<CameraFollow>().currAngel;//turn off movement script for new angel
+            
+            //turn off movement script for new angel
             this.currAngel.GetComponent<AWSDMove>().enabled = false;//should this be done here?
+
+            //ienumerate wait here for transition
+            StartCoroutine(FadeDelay(2));
         }
 
         if(this.allowedToClose)     //make happen on button click if new character // make happen after seconds for existing character
         {
+            this.allowedToClose = false;
             StartCoroutine(WakeUp(this.filled, this.unfilled));
-            if(GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().pauseCounter > 0)
-            {
-                this.currAngel.GetComponent<AWSDMove>().enabled = true;
-            }
+            //if(GameObject.Find("UI Controller").GetComponent<UIButtonFunctions>().pauseCounter > 0)
+
+            this.currAngel.GetComponent<AWSDMove>().enabled = true;     //took out of if
         }
     }
-
 
     IEnumerator WakeUp(float start, float end)
     {
@@ -61,5 +61,11 @@ public class Awaken : MonoBehaviour  //FIX, make ghost character on start and ha
             this.GetComponent<Image>().color = this.lerpedColor;
             yield return null;
         }
+    }
+
+    IEnumerator FadeDelay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        this.allowedToClose = true;
     }
 }

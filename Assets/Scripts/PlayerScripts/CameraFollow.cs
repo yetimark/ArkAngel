@@ -14,7 +14,8 @@ public class CameraFollow : MonoBehaviour
 
 	void Awake ()
     {
-        this.currAngel = GameObject.Find("UI Controller");//empty game object
+        //this.currAngel = GameObject.Find("UI Controller");//empty game object
+        this.currAngel = GameObject.Find("Ghost");
 
         this.throne = GameObject.Find("Throne");
         this.seraphim = GameObject.Find("Seraphim");
@@ -23,7 +24,7 @@ public class CameraFollow : MonoBehaviour
 	
 	void Update ()
     {
-        ChangeAngel();
+        //ChangeAngel();
         Follow(this.currAngel);
 	}
 
