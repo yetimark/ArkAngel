@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     public GameObject seraphim;
     public GameObject cherubim;
 
-    private Vector3 cameraHeight = new Vector3(0, 1, 0);
+    private Vector3 cameraDifference = new Vector3(0, 1, 0);
 
 	void Awake ()
     {
@@ -30,7 +30,7 @@ public class CameraFollow : MonoBehaviour
 
     void Follow(GameObject angel) //camera is slightly behind character movement because of follow and not moving directly with input
     {
-        this.transform.position = angel.transform.position + this.cameraHeight;
+        this.transform.position = angel.transform.position + this.cameraDifference;
         this.transform.rotation = angel.transform.rotation;
     }
 

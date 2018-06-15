@@ -9,7 +9,7 @@ public class UIButtonFunctions : MonoBehaviour
 
     public string chosen;
 
-    public bool gate = false, pauseGame = false;
+    public bool gate, pauseGame = false;
 
     public int pauseCounter = 0, saveCounter = 1;
 
@@ -20,21 +20,22 @@ public class UIButtonFunctions : MonoBehaviour
         this.selectClass = GameObject.Find("ClassSelectPanel");
         this.namePrompt = GameObject.Find("NameCharacterPrompt");
         this.currAngel = GameObject.Find("Main Camera").GetComponent<CameraFollow>().currAngel;
+        this.gate = GameObject.Find("New Character").GetComponent<NewCharacter>().gate;
 	}
 	
     public void SelectClass()
     {
+        Debug.Log("SelectClass");
         //returns the string of the button clicked
         this.chosen = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
         
         //turns off UI panel
         this.selectClass.SetActive(false);
 
-        //allows GroundRuleDecision to pull new value for this.chosen
-        //also could be used for some if blocks in setting names
+                //allows NewCharacter to finish by setting new currAngel and destroying Ghost
         this.gate = true;
 
-        GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToClose = true;
+        //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToClose = true;
     }
 
     public void InitializeAngel()
@@ -68,7 +69,7 @@ public class UIButtonFunctions : MonoBehaviour
     public void AssignName()//asigns a name on click of the character select prompt
     {
         //if name of button is the same as class
-        GameObject.Find((UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name) + "Name").GetComponent<Text>().text = this.myName;//works with class selection prompt
+        //GameObject.Find((UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name) + "Name").GetComponent<Text>().text = this.myName;//works with class selection prompt
     }
 
     public void PauseGame()

@@ -7,34 +7,59 @@ using UnityEngine.UI;
 public class SwapClass : MonoBehaviour
 {
     //switches from current character to desired character on contact of characters
-    //add rotation change to home
-    
+
     public Vector3 home;
     public Quaternion homeRot;
-    public GameObject[] characters;// is this being used?
+    public Transform mainCamera;
+    //public GameObject[] characters;// is this being used?
 
     public string standingOne = "";
 
     public bool allowedToCollide = false;
 
-	void Awake ()
+    void Awake()
     {
         this.home = this.transform.position;
         this.homeRot = this.transform.rotation;
+        this.mainCamera = GameObject.Find("Main Camera").transform;
+    }
 
-        this.characters = GameObject.FindGameObjectsWithTag("Player");
-	}
+    private void Start()
+    {
+        this.mainCamera.rotation = this.transform.rotation;
+    }
+
+    private void Update()
+    {
+        if (this.transform.GetChild(0).name == "Main Camera")
+        {
+            this.mainCamera.position = this.transform.position;
+            this.mainCamera.rotation = this.transform.rotation;
+        }
+    }
+
+    public void SetForwards()       //not sure if needed here
+    {
+        this.transform.rotation = Quaternion.identity;
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name != "Plane" && this.allowedToCollide)// not required if plane or terrain does not have a collider enabled. had some issues with it activating trigger events.
+        if(other.gameObject.name != "Plane" && this.allowedToCollide && other.gameObject.name != "New Character" 
+            && other.gameObject.name != "TriggerEnable")// not required if plane or terrain does not have a collider enabled. had some issues with it activating trigger events.
         {
+            Debug.Log("are we here?");
+
             this.allowedToCollide = false;
-            GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;
+            //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;
+            this.mainCamera.rotation = other.gameObject.transform.rotation; //if error, this might be it
+            this.mainCamera.position = other.gameObject.transform.position;
+            this.mainCamera.parent = other.gameObject.transform;
 
             this.standingOne = other.gameObject.name;
             //turns trigger for new character off and movement for old character off
             other.GetComponent<Collider>().isTrigger = false;
+            other.gameObject.GetComponent<SwapClass>().allowedToCollide = true;
             this.GetComponent<AWSDMove>().enabled = false;
 
             //returns old player to starting spot
@@ -47,16 +72,17 @@ public class SwapClass : MonoBehaviour
             other.GetComponent<AWSDMove>().enabled = true;
             this.GetComponent<Collider>().isTrigger = true;
         }
+
+        if(other.name == "NewCharacter")    //nope..
+        {
+            SetForwards();
+        }
     }
 
 
-    public void StopMovement()
+    public void StopMovement()      //not sure this is actually needed
     {
-        for (int i = 0; i < this.characters.Length; i++)
-        {
-            this.characters[i].GetComponent<AWSDMove>().enabled = false;
-            Debug.Log("did we stop moving?" + this.characters[i]);
-        }
+        Debug.Log("Stop moving");
     }
 }
 
