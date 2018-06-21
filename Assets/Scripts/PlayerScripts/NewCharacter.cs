@@ -105,6 +105,7 @@ public class NewCharacter : MonoBehaviour
     {
         if (other.name != "Plane" && other.name != "TriggerEnable" && other.name != "mainCamera")
         {
+            Debug.Log("triggered!!");
             this.classPanel.SetActive(true);     //choose prefab, set name for prefab, then make correct prefab
             Debug.Log(other.name);
             SetForward(other);              //made today?

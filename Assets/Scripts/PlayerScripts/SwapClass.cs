@@ -11,8 +11,6 @@ public class SwapClass : MonoBehaviour
     public Vector3 home;
     public Quaternion homeRot;
     public Transform mainCamera;
-    //public GameObject[] characters;// is this being used?
-
     public string standingOne = "";
 
     public bool allowedToCollide = false;
@@ -49,6 +47,7 @@ public class SwapClass : MonoBehaviour
             && other.gameObject.name != "TriggerEnable")// not required if plane or terrain does not have a collider enabled. had some issues with it activating trigger events.
         {
             Debug.Log("are we here?");
+            
 
             this.allowedToCollide = false;
             //GameObject.Find("WakeUp").GetComponent<Awaken>().allowedToFill = true;
@@ -56,11 +55,11 @@ public class SwapClass : MonoBehaviour
             this.mainCamera.position = other.gameObject.transform.position;
             this.mainCamera.parent = other.gameObject.transform;
 
-            this.standingOne = other.gameObject.name;
+            this.standingOne = other.gameObject.name;       //is this needed?
             //turns trigger for new character off and movement for old character off
             other.GetComponent<Collider>().isTrigger = false;
             other.gameObject.GetComponent<SwapClass>().allowedToCollide = true;
-            this.GetComponent<AWSDMove>().enabled = false;
+            this.GetComponent<AWSDMove>().enabled = false;      //is this working?
 
             //returns old player to starting spot
             this.transform.position = this.home;
@@ -76,6 +75,7 @@ public class SwapClass : MonoBehaviour
         if(other.name == "NewCharacter")    //nope..
         {
             SetForwards();
+            this.GetComponent<AWSDMove>().allowedToMove = false;        //umm
         }
     }
 

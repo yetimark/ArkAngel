@@ -59,9 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\DisableTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AWSDMove.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\DisableTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\GhostSwap.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\InitialClassSelect.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\NewCharacter.cs" />

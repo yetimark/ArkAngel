@@ -20,6 +20,7 @@ public class AWSDMove : MonoBehaviour
     {
         if (allowedToMove)      //is this bool actually being accessed anywhere else?
         {
+            Debug.Log("Allow movment" + allowedToMove);
             this.horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed;
             this.vertical = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
